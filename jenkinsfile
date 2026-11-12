@@ -29,7 +29,7 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t cineworld-app .'
+                sh 'docker build -t movie-website:latest .'
             }
         }
        stage('Docker Push to ECR') {
