@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Git Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                echo 'Running SonarQube Analysis'
+            }
+        }
+
+        stage('OWASP Dependency Check') {
+            steps {
+                echo 'Running OWASP Dependency Check'
+            }
+        }
+
+        stage('Trivy Security Scan') {
+            steps {
+                echo 'Running Trivy Scan'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t cineworld-app .'
+            }
+        }
+       stage('Docker Push to ECR') {
+            steps {
+                echo 'ECR Push configuration pending'
+            }
+        }
+
+        stage('Deploy to EKS') {
+            steps {
+                echo 'EKS deployment configuration pending'
+            }
+        }
+    }
+} 
